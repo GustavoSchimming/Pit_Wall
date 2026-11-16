@@ -1,0 +1,524 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E RESET
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  /* Garante que a largura total de um elemento inclua padding e border */
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  /* Fundo preto bem escuro característico de temas esportivos/dark mode */
+  background-color: #0b0c10;
+  color: #ffffff;
+  /* Evita que apareça barra de rolagem horizontal indesejada */
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO / TOPO DA PÁGINA (NAVBAR)
+   ========================================================================== */
+.navbar {
+  /* Flexbox alinha a logo, links e botão lado a lado na horizontal */
+  display: flex;
+  justify-content: space-between; /* Espaça os itens de ponta a ponta */
+  align-items: center;            /* Alinha verticalmente ao centro */
+  padding: 15px 50px;
+  background-color: #050507;
+  border-bottom: 1px solid #1a1a1f;
+}
+
+.logo {
+  font-family: 'Teko', sans-serif; /* Fonte estilo velocímetro/F1 */
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-style: italic; /* Texto em itálico passa sensação de velocidade */
+}
+
+/* Deixa apenas a palavra "WALL" vermelha */
+.logo span {
+  color: #ff1801;
+}
+
+.navbar nav a {
+  color: #a0a0a0;
+  text-decoration: none; /* Remove o sublinhado padrão dos links */
+  margin: 0 15px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+/* Efeito ao passar o mouse por cima dos links */
+.navbar nav a:hover {
+  color: #ffffff;
+}
+
+.btn-comprar {
+  background-color: #ff1801;
+  color: #ffffff;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.btn-comprar:hover {
+  background-color: #d61100;
+}
+
+/* ==========================================================================
+   3. SEÇÃO HERO (BANNER DE ENTRADA)
+   ========================================================================== */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 50px 20px 50px;
+  /* Gradiente escuro de cima para baixo */
+  background: linear-gradient(180deg, #050507 0%, #0b0c10 100%);
+}
+
+.hero-left {
+  max-width: 450px;
+}
+
+.subtitle {
+  color: #ff1801;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+
+.hero-left h1 {
+  font-family: 'Teko', sans-serif;
+  font-size: 64px;
+  line-height: 0.85; /* Aproxima as linhas do título */
+  font-style: italic;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero-left h1 span {
+  color: #ff1801;
+}
+
+.description {
+  color: #8a8a93;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-red {
+  background-color: #ff1801;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 2px;
+}
+
+.btn-outline {
+  border: 1px solid #333;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 2px;
+}
+
+.hero-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Efeito do corte diagonal na foto do carro */
+.car-image-container {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  /* clip-path desenha um polígono cortando o topo esquerdo da imagem em ângulo */
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+  border-left: 3px solid #ff1801;
+}
+
+.car-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a foto não fique esticada/deformada */
+}
+
+.stats-bar {
+  display: flex;
+  gap: 40px;
+  margin-top: 15px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-num {
+  font-family: 'Teko', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-lbl {
+  font-size: 9px;
+  color: #777;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   4. FAIXA ZEBRADA DA F1
+   ========================================================================== */
+.zebra-strip {
+  height: 12px;
+  /* O CSS repeating-linear-gradient cria as listras vermelhas e brancas em ângulo de -45 graus */
+  background: repeating-linear-gradient(
+    -45deg,
+    #ff1801,
+    #ff1801 15px,
+    #ffffff 15px,
+    #ffffff 30px
+  );
+  margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   5. ESTRUTURA DOS CONTAINERS DE CONTEÚDO
+   ========================================================================== */
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto; /* Centraliza a página na tela */
+  padding: 0 20px 60px 20px;
+}
+
+.section {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-family: 'Teko', sans-serif;
+  font-size: 28px;
+  font-style: italic;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.sec-num {
+  color: #ff1801;
+  margin-right: 5px;
+}
+
+/* ==========================================================================
+   6. SEÇÃO 01: GRID DE PILOTOS (CARDS)
+   ========================================================================== */
+.pilotos-grid {
+  /* Divide a área exatamente em 4 colunas iguais */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.card-piloto {
+  background-color: #121318;
+  border-top: 3px solid #ff1801; /* Linha superior com a cor da equipe */
+  padding: 20px 15px;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Cores específicas no topo de cada card para simular as equipes */
+.card-mclaren { border-top-color: #ff8700; }
+.card-mercedes { border-top-color: #00d2be; }
+.card-audi { border-top-color: #888888; }
+
+.piloto-num {
+  font-family: 'Teko', sans-serif;
+  font-size: 50px;
+  color: #ff1801;
+  font-weight: 700;
+  line-height: 0.9;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card-mclaren .piloto-num { color: #ff8700; }
+.card-mercedes .piloto-num { color: #00d2be; }
+.card-audi .piloto-num { color: #888888; }
+
+.card-piloto h3 {
+  font-size: 13px;
+  font-weight: 400;
+  color: #bbb;
+}
+
+.card-piloto h3 span {
+  font-weight: 700;
+  color: #fff;
+  display: block;
+}
+
+.card-piloto p {
+  font-size: 11px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* ==========================================================================
+   7. SEÇÃO 02: FORMULÁRIO DE FILTRO E TABELA DE CLASSIFICAÇÃO
+   ========================================================================== */
+.filter-form {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end; /* Alinha o botão com a base dos inputs */
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Faz os inputs se expandirem igualmente */
+}
+
+.form-group label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #777;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+  background-color: #121318;
+  border: 1px solid #22232a;
+  color: #fff;
+  padding: 10px 12px;
+  font-size: 12px;
+  border-radius: 3px;
+  outline: none;
+}
+
+.btn-filtrar {
+  background-color: #121318;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 10px 25px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  height: 38px;
+}
+
+/* Estilização da Tabela de Classificação */
+.table-container {
+  background-color: #121318;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; /* Elimina espaços vazios entre as bordas da tabela */
+  text-align: left;
+  font-size: 12px;
+}
+
+th {
+  background-color: #181920;
+  color: #666;
+  font-size: 10px;
+  padding: 12px 15px;
+  letter-spacing: 1px;
+}
+
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #1a1b22;
+  color: #ccc;
+}
+
+/* Destaca o 1º lugar com um tom levemente avermelhado no fundo */
+.rank-1 {
+  background-color: rgba(255, 24, 1, 0.05);
+}
+
+.pos-badge {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.pos-red {
+  background-color: #ff1801;
+  color: #fff;
+}
+
+/* Marcador colorido ao lado do nome do piloto */
+.team-indicator {
+  display: inline-block;
+  width: 3px;
+  height: 10px;
+  margin-right: 6px;
+}
+
+.ferrari-ind { background-color: #ff8700; }
+.red-ind { background-color: #ff1801; }
+.cyan-ind { background-color: #00d2be; }
+.gray-ind { background-color: #888; }
+
+/* ==========================================================================
+   8. SEÇÃO 03: FORMULÁRIO E TABELA DE INGRESSOS
+   ========================================================================== */
+.ingressos-layout {
+  display: grid;
+  /* Define 1 parte da largura para a tabela de preços e 2 partes para o formulário */
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+.precos-card {
+  background-color: #121318;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.precos-desc {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+/* Caixa de aviso amarela */
+.vagas-alert {
+  background-color: #332a00;
+  color: #ffcc00;
+  font-size: 11px;
+  padding: 8px 12px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.preco-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #1c1d26;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.preco-item .valor {
+  color: #ff1801;
+  font-weight: 700;
+}
+
+.form-card {
+  background-color: #121318;
+  padding: 25px;
+  border-radius: 4px;
+  border-top: 2px solid #ff1801;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+/* Input do tipo File estilizado */
+.file-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #0b0c10;
+  border: 1px solid #22232a;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+/* Esconde o botão padrão do navegador para criarmos um botão customizado */
+.file-input-wrapper input {
+  display: none;
+}
+
+.file-btn {
+  background-color: #22232a;
+  color: #ccc;
+  padding: 4px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.file-text {
+  font-size: 11px;
+  color: #666;
+}
+
+.help-text {
+  font-size: 10px;
+  color: #555;
+  margin-top: 4px;
+}
+
+textarea {
+  resize: vertical; /* Permite redimensionar apenas na vertical */
+  height: 70px;
+}
+
+.btn-reservar {
+  width: 100%;
+  background-color: #ff1801;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 15px;
+  border-radius: 2px;
+}
+
+.btn-reservar:hover {
+  background-color: #d61100;
+}
+
+/* ==========================================================================
+   9. RODAPÉ (FOOTER)
+   ========================================================================== */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #121318;
+  font-size: 11px;
+  color: #444;
+}
